@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шохбоз Шомансуров — операционный директор</title>
+  <meta name="description" content="Шохбоз Шомансуров — операционный директор. Настройка и масштабирование бизнеса.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #1d4ed8;
+      --blue-dark: #1e3a8a;
+      --blue-light: #3b82f6;
+      --blue-soft: #eff6ff;
+      --blue-line: #dbeafe;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --white: #ffffff;
+      --radius: 20px;
+      --shadow: 0 20px 50px -20px rgba(29, 78, 216, 0.35);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Manrope', system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ---------- Навигация ---------- */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--blue-line);
+    }
+    nav .container {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .logo { font-weight: 800; font-size: 20px; color: var(--blue-dark); }
+    .logo span { color: var(--blue-light); }
+    .nav-links { display: flex; gap: 28px; font-weight: 600; font-size: 15px; }
+    .nav-links a { color: var(--muted); transition: color .2s; }
+    .nav-links a:hover { color: var(--blue); }
+
+    /* ---------- Кнопки ---------- */
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 26px; border-radius: 14px;
+      font-weight: 700; font-size: 16px;
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+    .btn-primary { background: var(--blue); color: var(--white); box-shadow: var(--shadow); }
+    .btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); }
+    .btn-ghost { background: var(--blue-soft); color: var(--blue); }
+    .btn-ghost:hover { background: var(--blue-line); transform: translateY(-2px); }
+    .btn svg { width: 20px; height: 20px; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative; overflow: hidden;
+      padding: 90px 0 110px;
+      background:
+        radial-gradient(circle at 85% 20%, rgba(59, 130, 246, 0.18), transparent 45%),
+        radial-gradient(circle at 10% 90%, rgba(29, 78, 216, 0.10), transparent 40%),
+        var(--white);
+    }
+    .hero .container {
+      display: grid; grid-template-columns: 1.3fr 1fr; gap: 60px; align-items: center;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px; border-radius: 999px;
+      background: var(--blue-soft); color: var(--blue);
+      font-weight: 700; font-size: 14px; margin-bottom: 24px;
+    }
+    .badge::before {
+      content: ""; width: 8px; height: 8px; border-radius: 50%;
+      background: var(--blue-light); box-shadow: 0 0 0 4px rgba(59,130,246,.2);
+    }
+    h1 {
+      font-size: clamp(38px, 5.5vw, 64px);
+      line-height: 1.08; font-weight: 800; letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    h1 .accent {
+      background: linear-gradient(90deg, var(--blue), var(--blue-light));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .lead { font-size: 20px; color: var(--muted); max-width: 540px; margin-bottom: 36px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .photo-wrap { position: relative; justify-self: center; }
+    .photo-wrap::before {
+      content: ""; position: absolute; inset: -18px;
+      border-radius: 36px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      transform: rotate(-5deg); opacity: .9;
+    }
+    .photo {
+      position: relative;
+      width: 320px; height: 380px; border-radius: 28px;
+      background: linear-gradient(160deg, var(--blue-soft), var(--blue-line));
+      border: 6px solid var(--white);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; box-shadow: var(--shadow);
+    }
+    .photo img { width: 100%; height: 100%; object-fit: cover; }
+    .photo .initials { font-size: 96px; font-weight: 800; color: var(--blue); letter-spacing: -0.04em; }
+    .photo-tag {
+      position: absolute; bottom: -22px; left: -30px;
+      background: var(--white); border-radius: 16px; padding: 14px 18px;
+      box-shadow: 0 15px 40px -15px rgba(15, 23, 42, .25);
+      font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 10px;
+    }
+    .photo-tag .dot {
+      width: 36px; height: 36px; border-radius: 10px; background: var(--blue);
+      display: grid; place-items: center; color: var(--white); font-size: 18px;
+    }
+
+    /* ---------- Секции ---------- */
+    section { padding: 100px 0; }
+    .section-label {
+      color: var(--blue); font-weight: 800; font-size: 14px;
+      text-transform: uppercase; letter-spacing: .12em; margin-bottom: 12px;
+    }
+    h2 {
+      font-size: clamp(30px, 4vw, 44px); font-weight: 800;
+      line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 18px;
+    }
+    .section-intro { color: var(--muted); font-size: 18px; max-width: 640px; margin-bottom: 56px; }
+
+    /* Обо мне */
+    .about { background: var(--blue-soft); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .about-text p { font-size: 18px; color: #334155; margin-bottom: 18px; }
+    .about-points { display: grid; gap: 16px; }
+    .point {
+      background: var(--white); border-radius: var(--radius); padding: 22px 24px;
+      display: flex; gap: 16px; align-items: flex-start;
+      border: 1px solid var(--blue-line);
+    }
+    .point-icon {
+      flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px;
+      background: var(--blue-soft); color: var(--blue);
+      display: grid; place-items: center;
+    }
+    .point-icon svg { width: 22px; height: 22px; }
+    .point h4 { font-size: 17px; margin-bottom: 4px; }
+    .point p { color: var(--muted); font-size: 15px; }
+
+    /* Услуги */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .card {
+      padding: 32px; border-radius: var(--radius);
+      border: 1px solid var(--blue-line); background: var(--white);
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: transparent; }
+    .card-icon {
+      width: 56px; height: 56px; border-radius: 16px; margin-bottom: 22px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      color: var(--white); display: grid; place-items: center;
+    }
+    .card-icon svg { width: 26px; height: 26px; }
+    .card h3 { font-size: 20px; margin-bottom: 10px; }
+    .card p { color: var(--muted); font-size: 15.5px; }
+
+    /* Подход */
+    .process { background: linear-gradient(160deg, var(--blue-dark), var(--blue)); color: var(--white); }
+    .process .section-label { color: #93c5fd; }
+    .process .section-intro { color: #bfdbfe; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; counter-reset: step; }
+    .step {
+      padding: 28px; border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .step::before {
+      counter-increment: step; content: "0" counter(step);
+      display: block; font-size: 40px; font-weight: 800; color: #93c5fd; margin-bottom: 14px;
+    }
+    .step h3 { font-size: 19px; margin-bottom: 8px; }
+    .step p { color: #dbeafe; font-size: 15px; }
+
+    /* Контакты */
+    .contact-box {
+      border-radius: 32px; padding: 64px;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(59,130,246,.18), transparent 50%),
+        var(--blue-soft);
+      border: 1px solid var(--blue-line);
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center;
+    }
+    .contact-box p { color: var(--muted); font-size: 18px; }
+    .contact-card {
+      background: var(--white); border-radius: var(--radius); padding: 28px;
+      box-shadow: var(--shadow);
+    }
+    .contact-row { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+    .tg-icon {
+      width: 52px; height: 52px; border-radius: 14px; background: #229ED9;
+      display: grid; place-items: center; color: var(--white);
+    }
+    .tg-icon svg { width: 26px; height: 26px; }
+    .contact-row small { display: block; color: var(--muted); font-size: 13px; font-weight: 600; }
+    .contact-row strong { font-size: 19px; }
+    .contact-card .btn { width: 100%; justify-content: center; }
+
+    footer { padding: 32px 0; text-align: center; color: var(--muted); font-size: 14px; }
+
+    /* Анимация появления */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ---------- Адаптив ---------- */
+    @media (max-width: 960px) {
+      .hero .container, .about-grid, .contact-box { grid-template-columns: 1fr; }
+      .photo-wrap { order: -1; margin-bottom: 20px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero { padding: 60px 0 80px; }
+      section { padding: 72px 0; }
+      .services-grid, .steps { grid-template-columns: 1fr; }
+      .photo { width: 260px; height: 310px; }
+      .photo-tag { left: -10px; }
+      .contact-box { padding: 32px 22px; }
+      .lead { font-size: 18px; }
+      .container { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <a href="#" class="logo">Шохбоз<span>.</span></a>
+      <div class="nav-links">
+        <a href="#about">Обо мне</a>
+        <a href="#services">Направления</a>
+        <a href="#process">Подход</a>
+        <a href="#contact">Контакты</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="reveal">
+        <div class="badge">Операционный директор</div>
+        <h1>Шохбоз Шомансуров.<br><span class="accent">Настраиваю и масштабирую бизнес</span></h1>
+        <p class="lead">Выстраиваю процессы, команды и системы управления, чтобы бизнес работал предсказуемо и рос без хаоса.</p>
+        <div class="hero-actions">
+          <a href="https://t.me/+998881444144" target="_blank" rel="noopener" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.150 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.14-3.06-1.99 1.930c-.23.23-.42.42-.83.42z"/></svg>
+            Написать в Telegram
+          </a>
+          <a href="#services" class="btn btn-ghost">Чем я полезен</a>
+        </div>
+      </div>
+
+      <div class="photo-wrap reveal">
+        <div class="photo">
+          <!-- Сохраните своё фото в эту папку под именем photo.jpg — оно появится здесь автоматически -->
+          <img src="photo.jpg" alt="Шохбоз Шомансуров"
+               onerror="this.remove(); document.getElementById('initials').hidden = false;">
+          <span class="initials" id="initials" hidden>ШШ</span>
+        </div>
+        <div class="photo-tag">
+          <span class="dot">↗</span>
+          Рост через систему
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ОБО МНЕ -->
+  <section class="about" id="about">
+    <div class="container about-grid">
+      <div class="about-text reveal">
+        <div class="section-label">Обо мне</div>
+        <h2>Превращаю хаос в&nbsp;управляемую систему</h2>
+        <p>Я операционный директор. Моя задача — сделать так, чтобы бизнес работал как часы: процессы прозрачны, команда понимает свои цели, а собственник видит цифры и может заниматься стратегией, а не тушить пожары.</p>
+        <p>Помогаю компаниям пройти путь от ручного управления к системе, которую можно масштабировать: на новые филиалы, направления и рынки.</p>
+      </div>
+      <div class="about-points">
+        <div class="point reveal">
+          <div class="point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <div><h4>Системность</h4><p>Регламенты, роли и зоны ответственности вместо ручного контроля.</p></div>
+        </div>
+        <div class="point reveal">
+          <div class="point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+          <div><h4>Управление по цифрам</h4><p>Метрики и KPI, по которым видно, где бизнес теряет деньги и где растёт.</p></div>
+        </div>
+        <div class="point reveal">
+          <div class="point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 010 7M18 14.8c1.9.7 3.1 2.5 3.5 5.2"/></svg></div>
+          <div><h4>Сильная команда</h4><p>Структура, найм и мотивация, чтобы люди работали на общий результат.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- НАПРАВЛЕНИЯ -->
+  <section id="services">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Направления работы</div>
+        <h2>Чем я могу быть полезен</h2>
+        <p class="section-intro">Беру на себя операционную часть бизнеса — от аудита текущего состояния до запуска масштабирования.</p>
+      </div>
+      <div class="services-grid">
+        <div class="card reveal">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+          <h3>Операционный аудит</h3>
+          <p>Разбираю, как бизнес устроен сейчас: узкие места, потери, перегруженные звенья.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+          <h3>Настройка процессов</h3>
+          <p>Описываю и выстраиваю бизнес-процессы, регламенты и стандарты работы.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6.1L21 9l-4.5 4.3L17.6 20 12 16.8 6.4 20l1.1-6.7L3 9l6.1-.9z"/></svg></div>
+          <h3>Масштабирование</h3>
+          <p>Готовлю бизнес к росту: тиражируемая модель для новых точек, городов и направлений.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/></svg></div>
+          <h3>KPI и отчётность</h3>
+          <p>Система показателей и дашборды, чтобы принимать решения на основе данных.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M5 21v-1a7 7 0 0114 0v1"/></svg></div>
+          <h3>Управление командой</h3>
+          <p>Оргструктура, роли, найм и мотивация — команда, которая работает без микроменеджмента.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+          <h3>Автоматизация</h3>
+          <p>Внедряю CRM и инструменты, которые снимают рутину и ускоряют работу.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПОДХОД -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Подход</div>
+        <h2>Как я работаю</h2>
+        <p class="section-intro">Понятный путь от первой встречи до бизнеса, готового к росту.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><h3>Диагностика</h3><p>Погружаюсь в бизнес, собираю цифры и нахожу ключевые точки роста.</p></div>
+        <div class="step reveal"><h3>План</h3><p>Формирую приоритеты и дорожную карту изменений с понятными сроками.</p></div>
+        <div class="step reveal"><h3>Внедрение</h3><p>Перестраиваю процессы и структуру вместе с командой — на практике.</p></div>
+        <div class="step reveal"><h3>Масштаб</h3><p>Закрепляю результат и тиражирую работающую модель дальше.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- КОНТАКТЫ -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-box reveal">
+        <div>
+          <div class="section-label">Контакты</div>
+          <h2>Давайте обсудим ваш бизнес</h2>
+          <p>Расскажите, где сейчас ваша компания и куда хотите прийти, — подскажу, с чего начать.</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-row">
+            <div class="tg-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.14-3.06-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg></div>
+            <div>
+              <small>Telegram</small>
+              <strong>+998 88 144 41 44</strong>
+            </div>
+          </div>
+          <a href="https://t.me/+998881444144" target="_blank" rel="noopener" class="btn btn-primary">Написать в Telegram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Шохбоз Шомансуров · Операционный директор
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
